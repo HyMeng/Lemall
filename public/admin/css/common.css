@@ -112,6 +112,12 @@ img {
   width: 100%;
   height: 100%;
 }
+.le_main .container-fluid ol li a {
+  display: inline-block;
+}
+.le_main .container-fluid .btn-add {
+  margin-bottom: 20px;
+}
 .le_main .container-fluid .le_main_content .echart_left {
   width: 45%;
   height: 400px;
