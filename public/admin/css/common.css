@@ -109,6 +109,8 @@ img {
 }
 .le_main .container-fluid {
   padding-top: 70px;
+  width: 100%;
+  height: 100%;
 }
 .le_main .container-fluid .le_main_content .echart_left {
   width: 45%;
@@ -119,4 +121,7 @@ img {
   width: 45%;
   height: 400px;
   background-color: #069;
+}
+.le_main .container-fluid .le_main_content table.table .table-striped tr td {
+  vertical-align: middle;
 }
