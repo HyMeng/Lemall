@@ -64,12 +64,34 @@
                 <li>
                     <a href="javascript:;">管理系统</a>
                 </li>
+                <li>
+                    <a href="javascript:;">分类管理</a>
+                </li>
                 <li class="active">二级分类</li>
             </ol>
+            <button class="btn btn-default btn-add">添加分类</button>
             <div class="le_main_content">
-
+                <!-- 表格信息 -->
+                <table class="text-center table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td width="10%">序号</td>
+                            <td width="30%">一级分类名称</td>
+                            <td width="30%">二级分类名称</td>
+                            <td width="30%">二级分类LOGO</td>
+                        </tr>
+                    </thead>
+                    <tbody class="table-striped">
+                        <!-- 模板 -->
+                    </tbody>
+                </table>
+                <!-- 分页器 -->
+                <div class="user_page text-right">
+                    <ul id="paginator"></ul>
+                </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- 弹出模态框 -->
     <!-- Small modal -->
@@ -95,13 +117,86 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <!-- 添加分类 -->
+    <div class="modal fade" id="addModal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">添加分类</h4>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="true">
+                                    <span class="dropdown-text">请选择一级分类</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <input type="hidden" name="categoryId">
+                                <input type="hidden" name="hot" value="0">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <!-- 挖个坑 -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="brandName" placeholder="请输入二级分类名称">
+                        </div>
+                        <div class="form-group">
+                            <label for="fileupload" class="btn btn-default">上传图片</label>
+                            <input id="fileupload" type="file" name="pic1" data-url="/category/addSecondCategoryPic" multiple style="display:none;">
+                        </div>
+                        <div class="form-group">
+                            <img class="logo_img" src="./images/none.png" width="100px" height="100px" alt="">
+                            <input type="hidden" name="brandLogo">
+                        </div>
+                        <div class="modal-footer" style="padding-right:0;">
+                            <button type="button" class="btn btn-default btn-miss" data-dismiss="modal">取消</button>
+                            <button type="submit" class="btn btn-primary btn_addCategroy pull-right">添加</button>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
     <!-- /.modal -->
     <script src="./lib/jquery/jquery.min.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="./js/second.js"></script>
+    <script type="text/html" id="tpl">
+        {{each rows v i}}
+        <tr>
+            <td>{{(page-1)*size+i+1}}</td>
+            <td>{{v.categoryName}}</td>
+            <td>{{v.brandName}}</td>
+            <td>
+                <img src="{{v.brandLogo}}" width="50px" height="50px" alt="">
+            </td>
+        </tr>
+        {{/each}}
+    </script>
+    <script type="text/html" id="tpl2">
+        {{each rows v i }}
+        <li>
+            <a data-id="{{v.id}}" href="#">{{v.categoryName}}</a>
+        </li>
+        {{/each}}
+    </script>
 </body>
 
 </html>

@@ -131,3 +131,6 @@ img {
 .le_main .container-fluid .le_main_content table.table .table-striped tr td {
   vertical-align: middle;
 }
+.le_main .container-fluid .le_main_content table.table .table-striped tr td img {
+  margin: 0 auto;
+}
