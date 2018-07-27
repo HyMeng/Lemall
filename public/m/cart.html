@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>首页</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./lib/mui/css/mui.min.css">
+    <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/commo.css">
+    <link rel="stylesheet" href="./css/cart.css">
+</head>
+
+<body>
+    <div class="lt_container">
+        <div class="lt_header">
+            <a class="icon_left" href="javascript:history.go(-1);">
+                <span class="mui-icon mui-icon-back"></span>
+            </a>
+            <h4>搜索中心</h4>
+        </div>
+        <div class="lt_main">
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+
+                    <div class="container">
+                        <!-- 图文列表 -->
+                        <ul id="OA_task_2" class="mui-table-view">
+                            <!-- 模板引擎 -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lt_checkout">
+            <div class="mui-pull-left">
+                订单总金额
+                <span class="total">0.00</span>
+            </div>
+            <a href="javascript:;" class="mui-pull-right btn_order">生成订单</a>
+        </div>
+        <div class="lt_footer">
+            <ul class="mui-clearfix">
+                <li>
+                    <a class="active" href="index.html">
+                        <span class="fa fa-home"></span>
+                        <p>首页</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <span class="fa fa-bars"></span>
+                        <p>分类</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html" class="active">
+                        <span class="fa fa-shopping-cart"></span>
+                        <p>购物车</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="user.html">
+                        <span class="fa fa-user"></span>
+                        <p>会员中心</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./lib/mui/js/mui.min.js"></script>
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/cart.js"></script>
+    <script type="text/html" id="tpl">
+        {{each list v i}}
+        <li class="mui-table-view-cell mui-transitioning">
+            <div class="mui-slider-right mui-disabled">
+                <a class="mui-btn mui-btn-blue mui-icon mui-icon-compose btn_edit" data-id="{{v.id}}" data-num="{{v.num}}" data-size="{{v.size}}" data-product-num="{{v.productNum}}" data-product-size="{{v.productSize}}"></a>
+                <a data-id="{{v.id}}" class="mui-btn mui-btn-red mui-icon mui-icon-trash btn_delete"></a>
+            </div>
+            <div class="mui-slider-handle">
+                <div class="mui-table-cell media_list">
+                    <!-- 插入图文列表 -->
+                    <input type="checkbox" class="ck" data-price="{{v.price}}" data-num="{{v.num}}">
+                    <div class="img_box mui-pull-left">
+                        <img src="{{v.pic[0].picAddr}}">
+                    </div>
+                    <div class="info_box">
+                        <p class="proName mui-ellipsis-2">
+                            {{v.proName}}
+                        </p>
+                        <div class="md">
+                            <span class="price">&yen;{{v.price}}</span>
+                            <span class="oldPrice">&yen;{{v.oldPrice}}</span>
+                            <span class="num">{{v.num}}双</span>
+                        </div>
+                        <p class="size">鞋码: {{v.size}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </script>
+    <script type="text/html" id="tpl_model">
+        <div class="prosize">
+            <strong>尺码: </strong>
+            <% var temp = productSize.split('-');
+                for(var i=temp[0];i<=temp[1];i++) {
+            %>
+            <span class={{size==i ? 'active':''}}>{{i}}</span>
+            <% } %>
+        </div>
+        <div class="pronum">
+            <strong>数量: </strong>
+            <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{productNum}}'>
+                <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                <input class="mui-numbox-input" type="number" value="{{num}}" />
+                <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+            </div>
+        </div>
+    </script>
+</body>
+
+</html>

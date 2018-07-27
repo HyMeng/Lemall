@@ -1,0 +1,57 @@
+.comonStyle () {
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+.lt_proname {
+    .comonStyle();
+    font-weight: bold;
+}
+.lt_price {
+    .comonStyle();
+    .price {
+        color: red;
+        margin-left: 10px;
+    }
+    .oldPrice {
+        font-size: 12px;
+        color: #666;
+        text-decoration: line-through;
+    }
+}
+.lt_size {
+    .comonStyle();
+    >span {
+        &:first-child {
+            margin-left: 10px;
+        }
+        padding: 5px;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        line-height: 30px;
+        &.active {
+            background-color: #069;
+        }
+    }
+}
+.lt_num {
+    .comonStyle();
+    .mui-numbox {
+        margin-left: 10px;
+    }
+    .lastnum {
+        font-size: 12px;
+        color: #666;
+    }
+}
+.lt_des {
+    .comonStyle();
+}
+.lt_tools {
+    width: 100%;
+    position: absolute;
+    height: 55px;
+    border-top: 1px solid red;
+    bottom: 0;
+    padding: 10px 10px 0;
+}

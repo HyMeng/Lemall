@@ -120,3 +120,21 @@ img {
 .lt_footer ul a.active {
   color: darkorange;
 }
+.lt_search {
+  padding: 10px;
+  position: relative;
+}
+.lt_search .search_input {
+  height: 34px;
+  border: 1px solid #007aff;
+  line-height: 34px;
+  font-size: 12px;
+  border-radius: 5px;
+  margin: 0;
+}
+.lt_search button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 0 5px 5px 0;
+}

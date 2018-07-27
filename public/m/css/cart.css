@@ -1,0 +1,74 @@
+.media_list {
+  position: relative;
+  display: block;
+}
+.media_list .ck {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+.media_list .img_box {
+  float: left;
+}
+.media_list .img_box > img {
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+.media_list .info_box {
+  overflow: hidden;
+  padding-left: 10px;
+}
+.media_list .info_box .proName {
+  color: #333;
+  margin-bottom: 5px;
+  height: 42px;
+}
+.media_list .info_box .md {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #8f8f94;
+}
+.media_list .info_box .md .price {
+  color: red;
+}
+.media_list .info_box .md .oldPrice {
+  text-decoration: line-through;
+}
+.media_list .info_box .md .num {
+  float: right;
+}
+.media_list .info_box .size {
+  margin-bottom: 0;
+}
+.lt_checkout {
+  width: 100%;
+  position: absolute;
+  bottom: 55px;
+  height: 30px;
+  line-height: 30px;
+  border-top: 1px solid #ccc;
+  z-index: 999;
+  background-color: #eee;
+  font-size: 12px;
+  padding-left: 10px;
+  color: red;
+}
+.lt_checkout .btn_order {
+  padding: 0 15px;
+  background-color: red;
+  color: #fff;
+}
+.prosize span {
+  padding: 5px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  line-height: 30px;
+}
+.prosize span.active {
+  background-color: #069;
+}
+.prosize,
+.pronum {
+  text-align: left;
+}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,7 +10,7 @@
     <link rel="stylesheet" href="./lib/mui/css/mui.min.css">
     <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/commo.css">
-    <link rel="stylesheet" href="./css/category.css">
+    <link rel="stylesheet" href="./css/search.css">
 </head>
 
 <body>
@@ -18,25 +19,18 @@
             <a class="icon_left" href="javascript:history.go(-1);">
                 <span class="mui-icon mui-icon-back"></span>
             </a>
-            <h4>乐淘分类</h4>
-            <a class="icon_right" href="search.html">
-                <span class="fa fa-search"></span>
-            </a>
+            <h4>搜索中心</h4>
         </div>
-        <div class="lt_main mui-clearfix">
-            <div class="category_left">
-                <div class="mui-scroll-wrapper">
-                    <ul class="mui-scroll category_lt">
-                        <!-- 侧边栏模板 -->
-                    </ul>
-                </div>
-
-            </div>
-            <div class="category_right">
-                <div class="mui-scroll-wrapper">
-                    <ul class="category_rt mui-scroll mui-clearfix">
+        <div class="lt_main">
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <div class="lt_search">
+                        <input type="text" class="search_input" placeholder="請輸入搜索關鍵字">
+                        <button class="mui-btn mui-btn-primary btn_search">搜索</button>
+                    </div>
+                    <div class="lt_history">
                         <!-- 挖个坑 -->
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,7 +43,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="active" href="category.html">
+                    <a href="category.html">
                         <span class="fa fa-bars"></span>
                         <p>分类</p>
                     </a>
@@ -73,26 +67,34 @@
     <script src="./lib/zepto/zepto.min.js"></script>
     <script src="./lib/artTemplate/template-web.js"></script>
     <script src="./js/common.js"></script>
-    <script src="./js/category.js"></script>
+    <script src="./js/search.js"></script>
     <script type="text/html" id="tpl">
-        {{each rows v i}}
-        <li data-id="{{v.id}}">
-            <a href="#">{{v.categoryName}}</a>
-        </li>
-        {{/each}}
-    </script>
-    <script type="text/html" id="tpl2">
-        {{if rows.length===0}}
-            <li class="nomore-msg">该分类下没有更多的品牌信息</li>
+        {{ if list.length==0}}
+            <p>没有任何历史记录</p>
+        {{/if}} 
+        {{if list.length>0}}
+            <div class="history_title  mui-clearfix">
+                <span class="mui-pull-left">搜索歷史</span>
+                <div class="mui-pull-right btn_empty">
+                    <span class="fa fa-trash"></span>
+                    <span>清空记录</span>
+                </div>
+            </div>
+            <div class="history_content">
+                <ul>
+                    {{each list v i }}
+                    <li class="mui-clearfix">
+                        <div class="mui-pull-left">
+                            <a href="./searchList.html?key={{v}}">{{v}}</a>
+                        </div>
+                        <div class="mui-pull-right">
+                            <span data-index="{{i}}" class="mui-icon mui-icon-closeempty btn_delete"></span>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
         {{/if}}
-        {{each rows v i }}
-        <li>
-            <a href="#">
-                <img src="{{v.brandLogo}}" alt="">
-                <P>{{v.brandName?v.brandName:'images/none.png'}}</P>
-            </a>
-        </li>
-        {{/each}}
     </script>
 </body>
 

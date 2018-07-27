@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>商品列表</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./lib/mui/css/mui.min.css">
+    <link rel="stylesheet" href="./lib/fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/commo.css">
+    <link rel="stylesheet" href="./css/searchList.css">
+</head>
+
+<body>
+    <div class="lt_container">
+        <div class="lt_header">
+            <a class="icon_left" href="javascript:history.go(-1);">
+                <span class="mui-icon mui-icon-back"></span>
+            </a>
+            <h4>商品列表</h4>
+        </div>
+        <div class="lt_main">
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <div class="lt_search">
+                        <input type="text" class="search_input" placeholder="請輸入搜索關鍵字">
+                        <button class="mui-btn mui-btn-primary btn_search">搜索</button>
+                    </div>
+                    <div class="lt_content">
+                        <!-- 排序 -->
+                        <div class="lt_sort">
+                            <ul class="mui-clearfix">
+                                <li>
+                                    <a href="javascript:;">
+                                        <span>上架时间</span>
+                                        <span class="fa fa-angle-down"></span>
+                                    </a>
+                                </li>
+                                <li data-type="price">
+                                    <a href="javascript:;">
+                                        <span>价格</span>
+                                        <span class="fa fa-angle-down"></span>
+                                    </a>
+                                </li>
+                                <li data-type="num">
+                                    <a href="javascript:;">
+                                        <span>库存</span>
+                                        <span class="fa fa-angle-down"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <span>折扣</span>
+                                        <span class="fa fa-angle-down"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- 商品栏 -->
+                        <div class="lt_goods mui-clearfix">
+                           
+                            <!-- 商品模板 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lt_footer">
+            <ul class="mui-clearfix">
+                <li>
+                    <a href="index.html">
+                        <span class="fa fa-home"></span>
+                        <p>首页</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        <span class="fa fa-bars"></span>
+                        <p>分类</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                        <span class="fa fa-shopping-cart"></span>
+                        <p>购物车</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="user.html">
+                        <span class="fa fa-user"></span>
+                        <p>会员中心</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./lib/mui/js/mui.min.js"></script>
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/searchList.js"></script>
+    <script type="text/html" id="tpl">
+        {{each data v i}}
+        <a class="item" href="productdetails.html?id={{v.id}}">
+            {{if v.pic.length === 0}}
+            <img src="images/none.png" alt="">
+            {{else}}
+            <img src="{{v.pic[0].picAddr}}" alt="">
+            {{/if}}
+            <p class="mui-ellipsis-2">库存:{{v.num}} -- {{v.proName}}</p>
+            <div>
+                <span class="price">&yen;{{v.price}}</span>
+                <del class="oldPrice">&yen;{{v.oldPrice}}</del>
+            </div>
+            <button class="mui-btn mui-btn-primary">立即购买</button>
+        </a>
+        {{/each}}
+    </script>
+</body>
+
+</html>
